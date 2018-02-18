@@ -128,8 +128,8 @@ namespace WebApplicationMGOFinal.Controllers
 				{
 
 
-					std.EstadoReserva = "Reservado";
-					std.Color = "red";
+					std.EstadoReserva = "Por Confirmar";
+					std.Color = "yellow";
 					std.IsFullDay = 0;
 					DBContext.ReservaSet.Add(std);
 					DBContext.SaveChanges();

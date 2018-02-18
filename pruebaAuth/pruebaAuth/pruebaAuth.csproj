@@ -195,8 +195,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfirmadoReservaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PorConfirmarReservaController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Dia.cs">
       <DependentUpon>ReservasModel.tt</DependentUpon>
@@ -334,6 +336,11 @@
     <Content Include="Views\Reserva\Agenda.cshtml" />
     <Content Include="Views\Reserva\Index.cshtml" />
     <Content Include="Views\Reserva\Delete.cshtml" />
+    <Content Include="Views\PorConfirmarReserva\PorConfirmarReserva.cshtml" />
+    <Content Include="Views\Reserva\PorConfirmarReserva.cshtml" />
+    <Content Include="Views\PorConfirmarReserva\Index.cshtml" />
+    <Content Include="Views\ConfirmadoReserva\Index.cshtml" />
+    <Content Include="Views\PorConfirmarReserva\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
