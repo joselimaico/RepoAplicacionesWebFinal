@@ -92,7 +92,7 @@
 						right: 'month,basicWeek'
 					},
 					
-					hiddenDays: [ 6],
+					hiddenDays: [0,6],
 					eventLimit: true,
 					eventColor: '#BD94E5',
 					events: events,
@@ -110,16 +110,17 @@
 						}
 					},
 					dayClick: function (date, jsEvent, view) {
+					    var myDate = new Date();
+					    myDate.setDate(myDate.getDate() - 1);
 
+					    if (date < myDate) {
 
-						if (moment().format('YYYY-MM-DD') === date.format('YYYY-MM-DD') ||date.isAfter(moment())) {
-								// This allows today and future date
-								window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
-							} else {
-								// Else part is for past dates
-								alert('no puedes hacer una reserva en este día');
-							}		
+					        alert("No puedes hacer una reservación en este día!");
+					    }
 
+					    else {
+					        window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
+					    }
 					},
 					viewRender: function (currentView) {
 						var minDate = moment(),
