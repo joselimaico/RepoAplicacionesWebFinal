@@ -5,11 +5,29 @@
 }
 
 <h2>Calendario</h2>
+
 <!--
 	div id=calender es la grafico del calendario
 -->
 <div id="calender"></div>
+<div class="row">
+	<div>
 
+	</div>
+	<div class="col-sm-8">
+		<h2>Infomación del Calendario</h2>
+		<div class="row">
+			<div class="col-sm-4">
+				<h3><label type="label" class="label label-danger">Reservas Confirmadas</label></h3>
+			</div>
+			<div class="col-sm-4">
+				<h3><label type="label" class="label btn-warning">Reservas Por Confirmar</label></h3>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="col-sm-4" ><strong>Haz clic en una fecha del calendario para reservar </strong></div>
+</div>
 <!--llamo a las librerias (sin internet no sirve)-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.print.css" rel="stylesheet" media="print" />
@@ -19,6 +37,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
 	<script src='fullcalendar/lang/es.js'></script>
+	
+
 
 	<script>
 		$(document).ready(function () {
@@ -91,8 +111,8 @@
 						center: 'title',
 						right: 'month,basicWeek'
 					},
-					
-					hiddenDays: [ 0,6],
+
+					hiddenDays: [0, 6],
 					eventLimit: true,
 					eventColor: '#BD94E5',
 					events: events,
@@ -109,21 +129,21 @@
 
 						}
 					},
-					
+
 					dayClick: function (date, jsEvent, view) {
 						var myDate = new Date();
-						myDate.setDate(myDate.getDate()-1);
+						myDate.setDate(myDate.getDate() - 1);
 
 						if (date < myDate) {
 
 							alert("No puedes hacer una reservación en este día!");
 						}
-						
+
 						else {
 							window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
 						}
 					},
-					
+
 					viewRender: function (currentView) {
 						var minDate = moment(),
 							maxDate = moment().add(12, 'weeks');
@@ -145,18 +165,18 @@
 							$(".fc-next-button").prop('disabled', false);
 						}
 					},
-					
-					
+
+
 
 				});
 
 
 			}
 
-			
+
 		})
 	</script>
-	
+
 }
 
 

@@ -13,12 +13,17 @@
 <!--llamo a las librerias (sin internet no sirve)-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+<h4>Reservas confirmadas- color rojo</h4>
+<h4> Reservas por confirmar- color amarillo</h4>
 
 @section Scripts{
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
 	<script src='fullcalendar/lang/es.js'></script>
+
+
+
 
 	<script>
 		$(document).ready(function () {
@@ -91,8 +96,8 @@
 						center: 'title',
 						right: 'month,basicWeek'
 					},
-					
-					hiddenDays: [0,6],
+
+					hiddenDays: [0, 6],
 					eventLimit: true,
 					eventColor: '#BD94E5',
 					events: events,
@@ -110,17 +115,17 @@
 						}
 					},
 					dayClick: function (date, jsEvent, view) {
-					    var myDate = new Date();
-					    myDate.setDate(myDate.getDate() - 1);
+						var myDate = new Date();
+						myDate.setDate(myDate.getDate() - 1);
 
-					    if (date < myDate) {
+						if (date < myDate) {
 
-					        alert("No puedes hacer una reservación en este día!");
-					    }
+							alert("No puedes hacer una reservación en este día!");
+						}
 
-					    else {
-					        window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
-					    }
+						else {
+							window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
+						}
 					},
 					viewRender: function (currentView) {
 						var minDate = moment(),
@@ -143,18 +148,18 @@
 							$(".fc-next-button").prop('disabled', false);
 						}
 					},
-					
-					
+
+
 
 				});
 
 
 			}
 
-			
+
 		})
 	</script>
-	
+
 }
 
 
