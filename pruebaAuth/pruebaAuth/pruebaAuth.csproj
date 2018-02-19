@@ -242,6 +242,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="index.html" />
+    <Content Include="Inicio\index.html" />
+    <Content Include="Views\Shared\index.html" />
     <Content Include="ReservasModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ReservasModel.Context.cs</LastGenOutput>
@@ -265,6 +268,33 @@
     <Content Include="ReservasModel.edmx.diagram">
       <DependentUpon>ReservasModel.edmx</DependentUpon>
     </Content>
+    <Content Include=".DS_Store" />
+    <Content Include="Inicio\.DS_Store" />
+    <Content Include="Inicio\Reserva\Agenda.cshtml" />
+    <Content Include="Inicio\Reserva\Calendario.cshtml" />
+    <Content Include="Inicio\Reserva\Create.cshtml" />
+    <Content Include="Inicio\Reserva\Delete.cshtml" />
+    <Content Include="Inicio\Reserva\Index.cshtml" />
+    <Content Include="Inicio\Reserva\PorConfirmarReserva.cshtml" />
+    <Content Include="Inicio\PorConfirmarReserva\Edit.cshtml" />
+    <Content Include="Inicio\PorConfirmarReserva\Index.cshtml" />
+    <Content Include="Inicio\PorConfirmarReserva\PorConfirmarReserva.cshtml" />
+    <Content Include="Inicio\Home\.DS_Store" />
+    <Content Include="Inicio\Home\About.cshtml" />
+    <Content Include="Inicio\Home\Contact.cshtml" />
+    <Content Include="Inicio\Home\Index.cshtml" />
+    <Content Include="Inicio\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Inicio\Account\ConfirmEmail.cshtml" />
+    <Content Include="Inicio\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Inicio\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Inicio\Account\ForgotPassword.cshtml" />
+    <Content Include="Inicio\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Inicio\Account\Login.cshtml" />
+    <Content Include="Inicio\Account\Register.cshtml" />
+    <Content Include="Inicio\Account\ResetPassword.cshtml" />
+    <Content Include="Inicio\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Inicio\Account\SendCode.cshtml" />
+    <Content Include="Inicio\Account\VerifyCode.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -341,6 +371,8 @@
     <Content Include="Views\PorConfirmarReserva\Index.cshtml" />
     <Content Include="Views\ConfirmadoReserva\Index.cshtml" />
     <Content Include="Views\PorConfirmarReserva\Edit.cshtml" />
+    <Content Include="Views\Home\.DS_Store" />
+    <Content Include="Views\Shared\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -357,7 +389,23 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="images\" />
+    <Folder Include="Inicio\Home\images\" />
+    <Folder Include="Inicio\Home\layout\" />
+    <Folder Include="Inicio\Home\pages\" />
+    <Folder Include="Inicio\images\" />
+    <Folder Include="Inicio\layout\" />
+    <Folder Include="Inicio\pages\" />
+    <Folder Include="layout\" />
+    <Folder Include="pages\" />
+    <Folder Include="Views\Home\images\" />
+    <Folder Include="Views\Home\layout\" />
+    <Folder Include="Views\Home\pages\" />
+    <Folder Include="Views\Shared\images\" />
+    <Folder Include="Views\Shared\layout\" />
+    <Folder Include="Views\Shared\pages\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

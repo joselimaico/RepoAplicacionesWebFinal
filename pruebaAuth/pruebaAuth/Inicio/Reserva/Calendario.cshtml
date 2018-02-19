@@ -1,0 +1,159 @@
+﻿
+@{
+	ViewBag.Title = "Calendario";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calendario</h2>
+<!--
+	div id=calender es la grafico del calendario
+-->
+<div id="calender"></div>
+
+<!--llamo a las librerias (sin internet no sirve)-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+@section Scripts{
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
+	<script src='fullcalendar/lang/es.js'></script>
+
+	<script>
+		$(document).ready(function () {
+			var events = [];
+
+			$.ajax({
+				type: 'GET',
+				url: '/Reserva/GetEvents',
+				success: function (data) {
+					$.each(data, function (i, v) {
+						events.push({
+							title: v.Subject,
+							idreserva: v.IdReserva,
+							start: moment(v.FechaInicio),
+							end: v.FechaFin != null ? moment(v.FechaFin) : null,
+							color: v.Color,
+							allDay: v.IsFullDay
+						});
+					})
+
+					GenerateCalender(events);
+				},
+				error: function (error) {
+					alert('fallido');
+				}
+			})
+			$.ajax({
+				type: 'GET',
+				url: '/Reserva/getHolidays',
+				success: function (data) {
+					$.each(data, function (i, v) {
+						events.push({
+
+							title: v.Holiday,
+							start: moment(v.Fecha),
+							backgroundColor: v.Color,
+							blocked: true,
+							allDay: true,
+							rendering: "background"
+
+						});
+					})
+
+					GenerateCalender(events);
+				},
+				error: function (error) {
+					alert('fallido');
+				}
+			})
+
+			function GenerateCalender(events, eventos) {
+				$('#calender').fullCalendar('destroy');
+				$('#calender').fullCalendar({
+					monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+					monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+					dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+					dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+					contentHeight: 400,
+					showNonCurrentDates: false,
+					buttonText: {
+						today: 'Hoy',
+						month: 'Mes',
+						week: 'Semana'
+					},
+					themeSystem: 'bootstrap3',
+					defaultDate: new Date(),
+					timeFormat: 'h(:mm)a',
+					header: {
+						left: 'prev,today,next ',
+						center: 'title',
+						right: 'month,basicWeek'
+					},
+					
+					hiddenDays: [ 6],
+					eventLimit: true,
+					eventColor: '#BD94E5',
+					events: events,
+					eventClick: function (event) {
+						if (event.title) {
+							window.location.href = '/Reserva/Delete?idreserva=' + event.idreserva;
+						}
+
+
+					},
+					eventRender: function (event, element) {
+						if (event.rendering == 'background') {
+							element.append(event.title);
+
+						}
+					},
+					dayClick: function (date, jsEvent, view) {
+
+
+						if (moment().format('YYYY-MM-DD') === date.format('YYYY-MM-DD') ||date.isAfter(moment())) {
+								// This allows today and future date
+								window.location.href = '/Reserva/Agenda?fecha=' + date.toString();
+							} else {
+								// Else part is for past dates
+								alert('no puedes hacer una reserva en este día');
+							}		
+
+					},
+					viewRender: function (currentView) {
+						var minDate = moment(),
+							maxDate = moment().add(12, 'weeks');
+						// Past
+						if (minDate >= currentView.start && minDate <= currentView.end) {
+							$(".fc-prev-button").prop('disabled', true);
+							$(".fc-prev-button").addClass('fc-state-disabled');
+						}
+						else {
+							$(".fc-prev-button").removeClass('fc-state-disabled');
+							$(".fc-prev-button").prop('disabled', false);
+						}
+						// Future
+						if (maxDate >= currentView.start && maxDate <= currentView.end) {
+							$(".fc-next-button").prop('disabled', true);
+							$(".fc-next-button").addClass('fc-state-disabled');
+						} else {
+							$(".fc-next-button").removeClass('fc-state-disabled');
+							$(".fc-next-button").prop('disabled', false);
+						}
+					},
+					
+					
+
+				});
+
+
+			}
+
+			
+		})
+	</script>
+	
+}
+
+
