@@ -1,9 +1,17 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Museo de Historia Natural</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
 <body id="top">
     <div class="wrapper row0">
+        <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     </div>
     <!-- Top Background Image Wrapper -->
     <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.jpg');">
@@ -12,15 +20,23 @@
                 <div id="logo" class="fl_left">
                     <h1><a href="index.html">Escuela Politécnica Nacional</a></h1>
                 </div>
-                
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li>
+                            <a href="/Reserva/Index">Reservaciones</a>
+                        </li>
+                        <li><a href="/Reserva/Calendario">Calendario</a></li>
+                    </ul>
+                </nav>
             </header>
         </div>
         <div id="pageintro" class="hoc clear">
             <article>
-                <h2 class="heading">Museo de Historia Natural</h2>
+                <h2 class="heading">Museo de Historia Natural "gustavo Orcés"</h2>
                 <footer>
                     <ul class="nospace inline pushright">
-                        <li><a class="btn" href="#">Reservar tickets</a></li>
+                        <li><a class="btn" href="/Reserva/Calendario">Reservar tickets</a></li>
                     </ul>
                 </footer>
             </article>
@@ -39,7 +55,7 @@
                         <li class="one_half first">
                             <i class="fa-li fa fa-ticket"></i>
                             <h6 class="heading btmspace-10 font-x1"><a>Reserva tickets con anticipación</a></h6>
-                            <p>La reserva de tickets está disponible a partir del 1ro de cada mes, para dicho mes y el mes siguiente (p.e. el 1ro de Octubre se habilitarán los tickets para Octubre y Noviembre). Visita nuestro <a href="#">portal de tickets</a>  para reservar tus tickets gratis.</p>
+                            <p>La reserva de tickets está disponible a partir del 1ro de cada mes, para dicho mes y el mes siguiente (p.e. el 1ro de Octubre se habilitarán los tickets para Octubre y Noviembre). Visita nuestro <a href="/Reserva/Calendario">portal de tickets</a>  para reservar tus tickets gratis.</p>
                         </li>
                         <li class="one_half">
                             <i class="fa-li fa fa-clock-o"></i>
@@ -118,3 +134,4 @@
     <script src="layout/scripts/jquery.backtotop.js"></script>
     <script src="layout/scripts/jquery.mobilemenu.js"></script>
 </body>
+</html>
